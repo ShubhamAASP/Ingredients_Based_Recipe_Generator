@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our AI - Recipe Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #2ecc71;
+            --accent-color: #f39c12;
+            --text-color: #2c3e50;
+            --light-bg: #f5f5f5;
+            --footer-bg: #34495e;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #d35400 100%);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .header h1 {
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header:after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary-color) 25%, transparent 25%) -50px 0,
+                        linear-gradient(225deg, var(--primary-color) 25%, transparent 25%) -50px 0,
+                        linear-gradient(315deg, var(--primary-color) 25%, transparent 25%),
+                        linear-gradient(45deg, var(--primary-color) 25%, transparent 25%);
+            background-size: 100px 100px;
+            background-color: transparent;
+        }
+
+        .about-section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .about-section h3 {
+            color: var(--secondary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .about-card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .ai-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background-color: #34495e;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .footer-tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .footer h5 {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .back-btn {
+            margin-top: 30px;
+        }
+
+        .process-step {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header animate__animated animate__fadeIn">
+        <div class="container">
+            <h1><i class="fas fa-robot"></i> About Our AI Recipe Generator</h1>
+            <p class="lead">Discover the advanced technology behind our recipe recommendations</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="about-section animate__animated animate__fadeInUp">
+            <h2 class="text-center">How Our AI Recipe Generator Works</h2>
+            <p class="lead text-center mb-5">Our intelligent recipe generator uses state-of-the-art AI language models to create unique recipes based on your ingredients</p>
+            
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="about-card text-center">
+                        <div class="ai-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Powered by GPT2 Model</h4>
+                        <p>We use the GPT2  model fine-tuned on thousands of recipes to generate high-quality, varied recipes.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="about-card text-center">
+                        <div class="ai-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h4>Automatic Image Search</h4>
+                        <p>Our system integrates with the Pexels API to automatically find the perfect image for each generated recipe.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="about-card text-center">
+                        <div class="ai-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h4>PDF Generation</h4>
+                        <p>Download beautifully formatted recipe PDFs that you can save, print or share with friends and family.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="mt-5">The Recipe Generation Process</h3>
+            
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h5>Input Analysis</h5>
+                    <p>The AI analyzes your ingredients list, recognizing individual components and understanding how they might work together.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h5>Recipe Structure Creation</h5>
+                    <p>The model creates a structured recipe with a title, ingredients list, and step-by-step directions.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h5>Creative Variations</h5>
+                    <p>Multiple recipe variations are generated using different cooking techniques and flavor combinations.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h5>Visual Enhancement</h5>
+                    <p>Our system searches for and matches relevant food images to make the recipes visually appealing.</p>
+                </div>
+            </div>
+            
+            <h3>Technical Details</h3>
+            <p>Our recipe generator uses a GPT2 model fine-tuned on a dataset of over 100,000 recipes. The model was Fine-tuned by the our team and has been optimized for generating coherent, detailed recipes from simple ingredient lists.</p>
+            
+            <p>Key technical features:</p>
+            <ul>
+                <li>Based on the GPT2 architecture</li>
+                <li>Fine-tuned specifically for recipe generation</li>
+                <li>Special tokens for recipe structure (ingredients, directions, etc.)</li>
+                <li>Beam search and temperature sampling for creative variations</li>
+            </ul>
+            
+            <div class="text-center mt-5">
+                <a href="/" class="btn btn-primary back-btn">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Recipe Generator
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <i class="fas fa-utensils"></i> Recipe Generator
+                    </div>
+                    <div class="footer-tagline">
+                        Turning ingredients into culinary masterpieces with AI
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="/#feedback-section"><i class="fas fa-chevron-right"></i> Feedback</a></li>
+                        <li><a href="/about-ai"><i class="fas fa-chevron-right"></i> About Our AI</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> recipegenerator719@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 932164619</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 1406 Khau Galli, Mumbai City</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Recipe Generator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
